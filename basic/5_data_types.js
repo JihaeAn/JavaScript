@@ -91,3 +91,80 @@ console.log(typeof isTrue);
  * 직접 undefined로 값을 초기화하는 건 지양해야한다.
  */
 let noInit;
+console.log(noInit);
+console.log(typeof noInit);
+
+/**
+ * null 타입
+ *
+ * undefined와 마찬가지로 값이 없다는 뜻이나
+ * JS에서는 개발자가 명시적으로 없는 값으로 초기화할 때 사용된다.
+ */
+
+let init = null;
+console.log(init);
+console.log(typeof init); // object
+// 오류지만 고치지 않는 버그 !!
+console.log('---------------------');
+
+/**
+ * Symbol 타입
+ *
+ * 유일무이한 값을 생성할 때 사용한다.
+ * 다른 프리미티브 값들과 다르게 Symbol 함수를
+ * 호출해서 사용한다.
+ */
+const test1 = '1';
+const test2 = '1';
+
+console.log(test1 === test2);
+
+const symbol1 = Symbol('1');
+const symbol2 = Symbol('1');
+
+console.log(symbol1 === symbol2);
+
+/**
+ * Object 타입
+ *
+ * Map
+ * 키 : 벨류의 쌍으로 이루어져있다.
+ * key : value
+ */
+const dictionary = {
+    red: '빨간색',
+    orange: '주황색',
+    yellow: '노란색'
+};
+
+console.log(dictionary);
+console.log(dictionary['red']);
+console.log(dictionary['orange']);
+console.log(dictionary['yellow']);
+
+console.log(typeof dictionary);
+
+/**
+ * Array 타입
+ *
+ * 값을 리스트로 나열할 수 있는 타입이다.
+ */
+const iveMembersArray = [
+    '안유진',
+    '가을',
+    '레이',
+    '이서',
+    '리즈',
+    '장원영'
+];
+console.log(iveMembersArray);
+
+/**
+ * index
+ *
+ * 0부터 시작한다.
+ * 1씩 올라갑니다.
+ */
+console.log(iveMembersArray[0]);
+console.log(iveMembersArray[5]);
+

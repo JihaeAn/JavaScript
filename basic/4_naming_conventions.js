@@ -30,3 +30,4 @@ console.log(_yuJin);
 
 // 안유진
 const anYuJin ='안유진';
+console.log(anYuJin);
