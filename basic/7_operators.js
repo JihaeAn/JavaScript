@@ -218,4 +218,10 @@ console.log(name);
 name = name ?? '아이브';
 console.log(name);
 
+let name2;
+name2 ??= '코드팩토리';
+console.log(name2);
+
+
+
 
