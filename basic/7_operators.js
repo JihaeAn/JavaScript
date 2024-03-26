@@ -183,9 +183,19 @@ console.log(10 < 1 && 20 > 2);
 /**
  * 단축평가 (short circuit evaluation)
  *
- * &&
- * &&
+ * &&를 사용했을 때 좌측이 true면 우측 값 반환
+ * &&를 사용했을 때 좌측이 false면 좌측 값 반환
+ * ||를 사용했을 때 좌측이 true면 좌측 값 반환
+ * ||를 사용했을 때 좌측이 false면 좌측 값 반환
  */
+console.log('----------------------');
 
+console.log(true || '아이브');
+console.log(false || "아이브");
+console.log(true && '아이브');
+console.log(false && "아이브");
+
+console.log(true && true && '아이브');
+console.log(true && false && '아이브');
 
 
