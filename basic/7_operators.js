@@ -198,4 +198,24 @@ console.log(false && "아이브");
 console.log(true && true && '아이브');
 console.log(true && false && '아이브');
 
+/**
+ * 지수 연산자
+ */
+console.log(2 ** 2);
+console.log(10 ** 3);
+
+/**
+ * null 연산자
+ */
+let name;
+console.log(name);
+
+// ?? : 좌측 값이 undefined거나 null일 때 우측 값 반환
+name = name ?? '코드팩토리';
+console.log(name);
+
+// 위에서 이미 name에 코드팩토리라는 값이 저장되어있기에 아이브를 반환하지 않는다.
+name = name ?? '아이브';
+console.log(name);
+
 
