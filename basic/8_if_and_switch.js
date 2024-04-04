@@ -18,3 +18,30 @@ if(number % 2 === 0){
 } else{
     console.log('2,3의 배수가 아닙니다.');
 }
+
+const englishDay = 'monday';
+
+let koreanDay;
+
+switch(englishDay){
+    case 'monday':
+        koreanDay = '월요일';
+        break;
+    case 'tuesDay':
+        koreanDay = '화요일';
+        break;
+    case 'wednesDay':
+        koreanDay = '수요일';
+        break;
+    case 'thursDay':
+        koreanDay = '목요일';
+        break;
+    case 'friDay':
+        koreanDay = '금요일';
+        break;
+    default:
+        koreanDay = '주말';
+        break;
+}
+
+console.log(koreanDay);
