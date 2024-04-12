@@ -112,3 +112,39 @@ for(let i = 0; i < 10; i++){
     }
     console.log(i);
 }
+console.log('----------------');
+number = 0;
+
+while(number < 10){
+    if(number === 5){
+        break;
+    }
+    number ++;
+    console.log(number);
+}
+// 왜 5까지 출력되냐면 4를 number가 0부터 시작해서 4일 때까지 실행될 거잖아?
+// 그러면 ++ 때문에 5까지 찍히고 끝나겠지 !
+console.log('-----------------');
+
+/**
+ * continue
+ * for문의 break와 달리 현재 진행하고 있는 loop만 스킵하고 넘어간다.
+ */
+for(let i = 0; i < 10; i++){
+    if(i === 5){
+        continue;
+    }
+    console.log(i);
+}
+
+console.log('===========================');
+number = 0;
+
+while(number < 10){
+    number++;
+
+    if(number === 5){
+        continue;
+    }
+    console.log(number);
+}
