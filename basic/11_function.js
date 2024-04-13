@@ -94,9 +94,28 @@ const multiplyTwo = function(x, y){
 }
 console.log(multiplyTwo(4, 5));
 
+const multiplyThree = function (x, y, z){
+    console.log(arguments);
+    return x * y * z;
+}
 
+console.log('----------------------');
+console.log(multiplyThree(4, 5, 6));
 
+const multiplyAll = function (...arguments){
+    return Object.values(arguments).reduce((a,b) => a * b, 1);
+}
 
+console.log(multiplyAll(3, 4, 5, 6, 7, 8, 9, 10));
+
+// immediately invoked function
+(function(x, y){
+    console.log(x * y);
+})(4, 5)
+
+console.log(typeof multiply);
+console.log(multiply instanceof Object);    // true
+// 자바스크립트에서 함수는 Object 형이다!!!!!!!!!
 
 
 
