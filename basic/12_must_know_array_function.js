@@ -49,10 +49,13 @@ iveMembers = [
 ];
 
 // concat()
+// 끝에 내가 추가한 요소를 추가해서 새로운 Array를 반환해준다.
 // 아예 다른 메모리 공간의 값을 저장해주는 것
 console.log(iveMembers.concat('안지해'));
 console.log(iveMembers);
 
+// slice()
+// 몇 번 인덱스부터
 
 
 
