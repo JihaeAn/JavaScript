@@ -65,14 +65,53 @@ const yuJin3 = {
     name: '안유진',
     group: '아이브',
 }
-console.log(yuJin1 === yuJin2);
-console.log(yuJin1 === yuJin3);
-console.log(yuJin2 === yuJin3);
+console.log(yuJin1 === yuJin2); // ture
+console.log(yuJin1 === yuJin3); // false
+console.log(yuJin2 === yuJin3); // false
 
+/**
+ * Spread Operator
+ *
+ * Array 뿐만 아니라 객체에서도 존재한다.
+ * Spread Operator는 call by value 일까 reference일까?
+ * 당연히 value ! 서로 다른 값을 참조하고 있음
+ */
+const yuJin4 = {
+    ...yuJin3,
+};
+console.log(yuJin4);
 
+console.log(yuJin4 === yuJin3); // false
 
+const yuJin5 = {
+    year: 2003,
+    ...yuJin3,
+};
+console.log(yuJin5);    // { year: 2003, name: '안유진', group: '아이브' }
 
+// 코드팩토리라고 name을 넣어줬더라도 spread operator가 있으므로 덮어쓰기 된다.
+const yuJin6 = {
+    name: '코드팩토리',
+    ...yuJin3,
+};
+console.log(yuJin6);    // { name: '안유진', group: '아이브' }
 
+// BUT !!! 밑에다가 써주면 spread operator된 이후에 값이 변경되는 것이므로 값이 변경이 될 수 있다.
+// ⭐️ 순서가 중요
+const yuJin7 = {
+    ...yuJin3,
+    name: '코드팩토리',
+};
+console.log(yuJin7);    // { name: '코드팩토리', group: '아이브' }
+
+// Array도 마찬가지로 위치가 중요하다.
+// Array는 앞에 써도 출력되네 ! 가 아니고, 덮어쓰기 될 객체의 요소가 아니라 그렇다.
+const numbers = [1, 3, 5, 10];
+const numbers2 = [
+    10,
+    ... numbers,
+];
+console.log(numbers2);  // [ 10, 1, 3, 5, 10 ]
 
 
 
