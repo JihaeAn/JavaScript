@@ -54,9 +54,20 @@ console.log(originalObj === cloneObj);  // false
  * 참조 객체 공간(주소)을 복사
  *  => 그러니 오리지널 값이 바뀌면 참조하고 있는 모든 값들도 변함!
  */
+console.log('==================================');
 
-
-
+const yuJin1 = {
+    name: '안유진',
+    group: '아이브',
+}
+const yuJin2 = yuJin1;
+const yuJin3 = {
+    name: '안유진',
+    group: '아이브',
+}
+console.log(yuJin1 === yuJin2);
+console.log(yuJin1 === yuJin3);
+console.log(yuJin2 === yuJin3);
 
 
 
