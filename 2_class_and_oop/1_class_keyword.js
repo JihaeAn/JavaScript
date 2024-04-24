@@ -38,6 +38,8 @@ for(let i in yuJin){
 console.log(yuJin.sayName());
 console.log(gaeul.sayName());
 
+console.log(typeof IdoModel);
+console.log(typeof yuJin);
 
 
 
