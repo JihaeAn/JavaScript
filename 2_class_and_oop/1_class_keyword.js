@@ -13,6 +13,10 @@ class IdoModel{
         this.name = name;   // this.name = 프로퍼티(속성), name = 파라미터로 받아온 값
         this.year = year;
     }
+
+    sayName(){
+        return `안녕하세요. 저는 ${this.name}입니다.`;
+    }
 }
 
 // constructor 생성자
@@ -23,7 +27,16 @@ const gaeul = new IdoModel('김가을', 2002);
 console.log(gaeul);
 
 console.log(yuJin.name);    // 안유진
+console.log(yuJin['name']); // 위랑 같은 역할이다.
+console.log(Object.keys(yuJin));    // key값 가져오는 방법
 
+// ⭐️ 객체를 for문으로 출력하면 i는 프로퍼티를 가지고 돌게 된다.
+for(let i in yuJin){
+    console.log(`${i} : ${yuJin[i]}`);
+}
+
+console.log(yuJin.sayName());
+console.log(gaeul.sayName());
 
 
 
