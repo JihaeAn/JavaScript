@@ -15,7 +15,7 @@ class IdoModel{
     }
 
     sayName(){
-        return `안녕하세요. 저는 ${this.name}입니다.`;
+        return `안녕하세요. 저는 ${this.name}입니다.`;    // 객체.필드명
     }
 }
 
@@ -38,6 +38,7 @@ for(let i in yuJin){
 console.log(yuJin.sayName());
 console.log(gaeul.sayName());
 
+// 객체를 생성하기 전까지는 function, 생성 후엔 object ???
 console.log(typeof IdoModel);
 console.log(typeof yuJin);
 

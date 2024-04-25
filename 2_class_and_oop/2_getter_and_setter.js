@@ -27,8 +27,8 @@ class IdolModel{
     }
 }
 const yuJin = new IdolModel('안유진', 2003);
-console.log(yuJin);
-console.log(yuJin.nameAndYear);
+console.log(yuJin);             // IdolModel { name: '안유진', year: 2003 }
+console.log(yuJin.nameAndYear); // 안유진-2003
 
 yuJin.setName = '장원영';
 console.log(yuJin); // IdolModel { name: '장원영', year: 2003 }
