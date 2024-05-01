@@ -40,8 +40,13 @@ console.log(yuJin.name);    // 안유진
 console.log(jiMin.sing());  // 남자 아이돌이 노래를 부릅니다.
 
 
+// 당연히 실행이 안 됨 !
+// 자식은 부모한테 물려받은 걸 쓸 수 있지만 부모는 자식 걸 쓰지 못한다.
+// console.log(yuJin.sing());
 
-
+console.log(yuJin instanceof IdolModel);        // true
+console.log(yuJin instanceof FemaleIdolModel);  // true
+console.log(yuJin instanceof MaleIdolModel);    // false
 
 
 
