@@ -26,7 +26,7 @@ class FemaleIdolModel extends IdolModel{
         this.part = part;
     }
 
-    // 주의해야할 점 자바스크립트는 완벽한 객체지향 언어가 아님
+    // 주의해야할 점은 자바스크립트는 완벽한 객체지향 언어가 아님
     // ⭐️ 변수값을 불러올 때는 suepr 키워드를 함수 안에서 쓰면 안 됨
     // 그래서 super.name이라고 쓰지 않고 this.name을 쓰는 것임
     sayHello() {
