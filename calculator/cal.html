@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="cal.css">
+</head>
+
+<body>
+    <div class='wrap'>
+        <div class='display'>
+            <div class='input'></div>
+        </div>
+        <div class='buttons'>
+            <button data-type="ac" class='ac' onclick="clearScreen()">C</button>
+            <button data-type='operator' class='operator' value="+" onclick="addOutput('+')">+</button>
+            <button data-type='operator' class='operator' value="-" onclick="addOutput('-')">-</button>
+            <button data-type='operator' class='operator' value="*" onclick="addOutput('*')">x</button>
+            <button class='numBtn' value="7" onclick="addOutput(7)">7</button>
+            <button class='numBtn' value="8" onclick="addOutput(8)">8</button>
+            <button class='numBtn' value="9" onclick="addOutput(9)">9</button>
+            <button data-type='operator' class='operator'>/</button>
+            <button class='numBtn' value="4" onclick="addOutput(4)">4</button>
+            <button class='numBtn' value="5" onclick="addOutput(5)">5</button>
+            <button class='numBtn' value="6" onclick="addOutput(6)">6</button>
+            <button data-type='result' class='result' onclick="calculate()">=</button>
+            <button class='numBtn' value="1" onclick="addOutput(1)">1</button>
+            <button class='numBtn' value="2" onclick="addOutput(2)">2</button>
+            <button class='numBtn' value="3" onclick="addOutput(3)">3</button>
+            <button class='numBtn' value="0" onclick="addOutput(0)">0</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function addOutput(num) {
+        var display = document.getElementById("display");
+        display.value = display.value + num;
+    }
+
+    function calculate() {
+        var display = document.getElementById("display");
+        var result = eval(display.value);
+        var displayResult = document.getElementById("result");
+        displayResult.value = result;
+    }
+</script>
+
