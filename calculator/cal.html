@@ -3,133 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="cal.css">
 </head>
 
 <body>
     <div class='wrap'>
         <div class='display'>
-            <div class='input'></div>
+            <div class='input' id="input"></div>
+            <div class='input' id="result"></div>
         </div>
         <div class='buttons'>
             <button data-type="ac" class='ac' onclick="clearScreen()">C</button>
             <button data-type='operator' class='operator' value="+" onclick="addOutput('+')">+</button>
             <button data-type='operator' class='operator' value="-" onclick="addOutput('-')">-</button>
             <button data-type='operator' class='operator' value="*" onclick="addOutput('*')">x</button>
-            <button class='numBtn' value="7" onclick="addOutput(7)">7</button>
-            <button class='numBtn' value="8" onclick="addOutput(8)">8</button>
-            <button class='numBtn' value="9" onclick="addOutput(9)">9</button>
-            <button data-type='operator' class='operator'>/</button>
-            <button class='numBtn' value="4" onclick="addOutput(4)">4</button>
-            <button class='numBtn' value="5" onclick="addOutput(5)">5</button>
-            <button class='numBtn' value="6" onclick="addOutput(6)">6</button>
+            <button class='numBtn' value="7">7</button>
+            <button class='numBtn' value="8">8</button>
+            <button class='numBtn' value="9">9</button>
+            <button data-type='operator' class='operator' onclick="addOutput('/')">/</button>
+            <button class='numBtn' value="4">4</button>
+            <button class='numBtn' value="5">5</button>
+            <button class='numBtn' value="6">6</button>
             <button data-type='result' class='result' onclick="calculate()">=</button>
-            <button class='numBtn' value="1" onclick="addOutput(1)">1</button>
-            <button class='numBtn' value="2" onclick="addOutput(2)">2</button>
-            <button class='numBtn' value="3" onclick="addOutput(3)">3</button>
-            <button class='numBtn' value="0" onclick="addOutput(0)">0</button>
+            <button class='numBtn' value="1">1</button>
+            <button class='numBtn' value="2">2</button>
+            <button class='numBtn' value="3">3</button>
+            <button class='numBtn' value="0">0</button>
         </div>
     </div>
 </body>
 </html>
 
 <script>
-    // function addOutput(num) {
-    //     var display = document.getElementById("display");
-    //     display.value = display.value + num;
-    // }
-    //
-    // function calculate() {
-    //     var display = document.getElementById("display");
-    //     var result = eval(display.value);
-    //     var displayResult = document.getElementById("result");
-    //     displayResult.value = result;
-    // }
-    const buttons = document.querySelectorAll('button');
-    const operators = document.querySelectorAll('.operator');
-    const displayElement = document.querySelector('.input');
-    const numBtn = document.querySelectorAll('.numBtn');
+    // 첫 화면에서 0으로 초기화
+    $(function () {
+        $("#input").text(0);
 
-    let operatorOn = ''; // 연산자 입력
-    let previousNum = ''; //이전 값
-    let resentNum = ''; // 최근값
+       $(".numBtn").click(function () {
+           let value = $(this).val();
+           addNum(value);
+       })
+    });
 
-    let calculator = () => {
-        let isFirstDigit = true; // 첫 번째 숫자 여부를 판별하는 변수
+    function addNum(value) {
+        let originValue = $("#input").text();
 
-        buttons.forEach((item) => {
-            item.addEventListener('click', (e) => {
-                let action = e.target.classList[0];
-                let click = e.target.innerHTML;
+        if (originValue === "0") {
+            $("#input").text(value);
+        } else {
+            $("#input").text(originValue + value);
+        }
+    }
 
-                if (action === 'operator') {
-                    //연산자 눌렀을 때
-                    operatorOn = click;
-                    previousNum = displayElement.textContent;
-                    displayElement.textContent = '';
-                    isFirstDigit = true;
-                    // 연산자를 누르면 다음 숫자는 첫 번째 숫자가 됨
-                }
-                if (action === 'numBtn') {
-                    if (isFirstDigit && click === '0') {
-                        // 첫 번째 숫자이고 입력된 값이 0인 경우 아무 작업도 수행하지 않음
-                        return;
-                    }
+    function addOutput(operator) {
+        let originValue = $("#input").text();
+        let last = originValue.slice(-1);
 
-                    if (displayElement.textContent === '' && operatorOn === '') {
-                        //창이비어있고 연산자 누르지 않았을때(한자리)
-                        displayElement.textContent = click;
-                        previousNum = displayElement.textContent;
-                    } else if (
-                        //창이비어지 않고 연산자 누르지 않았을때(한자리이상)
-                        displayElement.textContent !== '' &&
-                        operatorOn === ''
-                    ) {
-                        displayElement.textContent =
-                            displayElement.textContent + click;
-                        previousNum = displayElement.textContent;
-                    } else if (
-                        //창이비어있고 연산자 눌렀을때(한자리)
-                        displayElement.textContent === '' &&
-                        operatorOn !== ''
-                    ) {
-                        displayElement.textContent = click;
-                        resentNum = displayElement.textContent;
-                    } else if (
-                        //창이비어있지않고 연산자 누르지 않았을때 (한자리이상)
-                        displayElement.textContent !== '' &&
-                        operatorOn !== ''
-                    ) {
-                        displayElement.textContent =
-                            displayElement.textContent + click;
-                        resentNum = displayElement.textContent;
-                    }
-                    isFirstDigit = false;
-                    // 첫 번째 숫자 입력 후에는 첫 번째 숫자가 아님을 표시
-                }
+        if (originValue === "0") {
+            return false;
+        } else if (last === "+" || last === "-" || last === "*" || last === "/") {
+            // 그럼 원래 있던 연산자는 없애고 새 연산자를 넣어줘야 함
+            let lastValue = originValue.substring(0, originValue.length - 1) + operator;
+            $("#input").text(lastValue);
+        } else {
+            $("#input").text(originValue + operator);
+        }
+    }
 
-                if (action === 'result') {
-                    // = 눌렀을 때 calculate함수 실행
-                    displayElement.textContent = calculate(
-                        previousNum,
-                        operatorOn,
-                        resentNum
-                    );
-                    isFirstDigit = true;
-                    // 결과를 표시한 후에는 다음 숫자는 첫 번째 숫자가 됨
-                }
-                if (action === 'ac') {
-                    //C 버튼 눌렀을 때 모든 할당 초기화
-                    displayElement.textContent = '';
-                    previousNum = '';
-                    operatorOn = '';
-                    resentNum = '';
-                    isFirstDigit = true;
-                    // 모든 할당 초기화 후에는 다음 숫자는 첫 번째 숫자가 됨
-                }
-            });
-        });
-    };
-    calculator();
+    function calculate() {
+        let toNumber = $("#input").text();
+
+        // Function 생성자를 사용하여 수식을 계산
+        let result = new Function('return ' + toNumber)();
+        $("#input").text(result);
+    }
+
+    function clearScreen() {
+        $("#input").text("0");
+    }
+
 </script>
 
