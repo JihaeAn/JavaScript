@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="cal.css">
+</head>
+
+<body>
+<div class='wrap'>
+    <div class='display'>
+        <div class='input' id="input"></div>
+        <div class='input' id="result"></div>
+    </div>
+    <div class='buttons'>
+        <button data-type="ac" class='ac' onclick="clearScreen()">C</button>
+        <button data-type='operator' class='operator' value="+" onclick="addOutput('+')">+</button>
+        <button data-type='operator' class='operator' value="-" onclick="addOutput('-')">-</button>
+        <button data-type='operator' class='operator' value="*" onclick="addOutput('*')">x</button>
+        <button class='numBtn' value="7">7</button>
+        <button class='numBtn' value="8">8</button>
+        <button class='numBtn' value="9">9</button>
+        <button data-type='operator' class='operator' onclick="addOutput('/')">/</button>
+        <button class='numBtn' value="4">4</button>
+        <button class='numBtn' value="5">5</button>
+        <button class='numBtn' value="6">6</button>
+        <button data-type='result' class='result' onclick="calculate()">=</button>
+        <button class='numBtn' value="1">1</button>
+        <button class='numBtn' value="2">2</button>
+        <button class='numBtn' value="3">3</button>
+        <button class='numBtn' value="0">0</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('input').innerText = 0;
+    let isNew = true;
+    $(function () {
+        let result = Number(document.getElementById('result').innerText);
+
+        $('.numBtn').click(function () {
+            let value = $(this).val();
+            addNum(value);
+        });
+    });
+
+    function addNum(value) {
+        if (document.getElementById('input').innerText == 0 || isNew) {
+            document.getElementById('input').innerText = value;
+            isNew = false;
+        } else {
+            document.getElementById('input').innerText += value;
+        }
+    }
+
+    function clearScreen() {
+        document.getElementById('input').innerText = 0;
+    }
+
+    function addOutput(operator) {
+        let input = document.getElementById('input').innerText;
+        let last = input.slice(-1);
+        console.log('last : ' + last)
+
+        if (input == 0) {
+            document.getElementById('input').innerText += operator;
+        } else if (isNew) {
+            document.getElementById('input').innerText += operator;
+            isNew = false;
+        } else {
+            if (!isNaN(last)) {
+                document.getElementById('input').innerText += operator;
+            } else {
+                document.getElementById('input').innerText = input.slice(0, -1) + operator;
+            }
+        }
+    }
+
+    function calculate() {
+        let inputStr = 'return ' + document.getElementById('input').innerText;
+        console.log(inputStr);
+        try {
+            document.getElementById('input').innerText = new Function(inputStr)();
+            isNew = true;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+</script>
+</body>
+</html>

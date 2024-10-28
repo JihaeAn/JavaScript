@@ -15,13 +15,13 @@
         </div>
         <div class='buttons'>
             <button data-type="ac" class='ac' onclick="clearScreen()">C</button>
-            <button data-type='operator' class='operator' value="+" onclick="addOutput('+')">+</button>
-            <button data-type='operator' class='operator' value="-" onclick="addOutput('-')">-</button>
-            <button data-type='operator' class='operator' value="*" onclick="addOutput('*')">x</button>
+            <button data-type='operator' class='operator' value="+">+</button>
+            <button data-type='operator' class='operator' value="-">-</button>
+            <button data-type='operator' class='operator' value="*">x</button>
             <button class='numBtn' value="7">7</button>
             <button class='numBtn' value="8">8</button>
             <button class='numBtn' value="9">9</button>
-            <button data-type='operator' class='operator' onclick="addOutput('/')">/</button>
+            <button data-type='operator' class='operator' value="/">/</button>
             <button class='numBtn' value="4">4</button>
             <button class='numBtn' value="5">5</button>
             <button class='numBtn' value="6">6</button>
@@ -46,6 +46,13 @@
            let value = $(this).val();
            addNum(value);
        })
+
+        //  onclick 대신 유지보수에 쉽게 .click() 이벤트로 변경
+        $(".operator").click(function (){
+            let operator = $(this).val();
+            addOutput(operator);
+        })
+
     });
 
     function addNum(value) {
