@@ -14,7 +14,7 @@
             <div class='input' id="result"></div>
         </div>
         <div class='buttons'>
-            <button data-type="ac" class='ac' onclick="clearScreen()">C</button>
+            <button data-type="ac" class='ac'>C</button>
             <button data-type='operator' class='operator' value="+">+</button>
             <button data-type='operator' class='operator' value="-">-</button>
             <button data-type='operator' class='operator' value="*">x</button>
@@ -25,7 +25,7 @@
             <button class='numBtn' value="4">4</button>
             <button class='numBtn' value="5">5</button>
             <button class='numBtn' value="6">6</button>
-            <button data-type='result' class='result' onclick="calculate()">=</button>
+            <button data-type='result' class='result'>=</button>
             <button class='numBtn' value="1">1</button>
             <button class='numBtn' value="2">2</button>
             <button class='numBtn' value="3">3</button>
@@ -53,7 +53,15 @@
             addOutput(operator);
         })
 
+        $(".result").click(function (){
+            calculate();
+        })
+
+        $(".ac").click(function () {
+            clearScreen();
+        })
     });
+
 
     function addNum(value) {
         let originValue = $("#input").text();
